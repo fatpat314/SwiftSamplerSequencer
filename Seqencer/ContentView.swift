@@ -1,21 +1,194 @@
 //
 //  ContentView.swift
-//  Seqencer
+//  SwiftUI-example
 //
-//  Created by patrick kelly on 2/8/21.
+//  Created by patrick kelly on 2/3/21.
 //
 
 import SwiftUI
+import AVFoundation
+
+var player: AVAudioPlayer!
 
 struct ContentView: View {
+    @State private var timeRemaining = 8
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+//    Do we try and trigger the sound when timeRemaining == some number
+
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
+            VStack(spacing: 2){
+                Text("\(timeRemaining)").onReceive(timer){ input in
+                    if self.timeRemaining > 1 {
+                        self.timeRemaining -= 1
+                    }else{
+                        timeRemaining = 8
+                    }
+                }
+                    .foregroundColor(Color.white)
+                HStack{
+                    if self.timeRemaining == 8{
+                        self.makeButton(bgColor: .red)
+//                        Or do we trigger the sound when the button turns red?
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+                HStack{
+                    if self.timeRemaining == 7{
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+                HStack{
+                    if self.timeRemaining == 6{
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+                HStack{
+                    if self.timeRemaining == 5{
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+                HStack{
+                    if self.timeRemaining == 4{
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+            
+                HStack{
+                    if self.timeRemaining == 3{
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+                
+                HStack{
+                    if self.timeRemaining == 2{
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+                
+                HStack{
+                    if self.timeRemaining == 1{
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+                Spacer(minLength: 2)
+            }
+        }
+    }
+    func playSound() {
+        let url = Bundle.main.url(forResource: "hi", withExtension: "wav")
+        
+        guard url != nil else{
+            return
+        }
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url!)
+            player?.play()
+        } catch {
+            print("error")
+        }
+        return
+    }
+    
+    func makeButton(title: String = "", width: CGFloat = 65, height: CGFloat = 65, bgColor: Color = Color(white: 0.4)) -> some View {
+        return AnyView(
+            Button(action: {
+                playSound()
+            }, label: {
+                Text("")
+                .frame(width: width, height: height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .background(bgColor)
+                .cornerRadius(35)
+                .font(.system(size: 28))
+                .foregroundColor(.white)
+        }))
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+        }
     }
 }
+
