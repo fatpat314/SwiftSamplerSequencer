@@ -1,6 +1,6 @@
 # SwiftSamplerSequencer
 
-####A simple audio sampler and sequencer
+A simple audio sampler and sequencer
 
 **8 step sqeuencer where each cell is able to trigger an audio sample playback.**
 
