@@ -5,48 +5,27 @@
 //  Created by patrick kelly on 2/3/21.
 //
 
+
 import SwiftUI
 import AVFoundation
 
 var player: AVAudioPlayer!
 
 struct ContentView: View {
-    @State private var timeRemaining = 8
+    @EnvironmentObject var env: GlobalState
+//     @State private var timeRemaining = 8
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
-//    Do we try and trigger the sound when timeRemaining == some number
-
     
     var body: some View {
         ZStack {
             Color.black
                 .ignoresSafeArea()
             VStack(spacing: 2){
-                Text("\(timeRemaining)").onReceive(timer){ input in
-                    if self.timeRemaining > 1 {
-                        self.timeRemaining -= 1
-                    }else{
-                        timeRemaining = 8
-                    }
-                }
-                    .foregroundColor(Color.white)
+                Text(env.display).onReceive(env.timer){ input in
+                    env.stepCount()
+                }.foregroundColor(Color.white)
                 HStack{
-                    if self.timeRemaining == 8{
-                        self.makeButton(bgColor: .red)
-//                        Or do we trigger the sound when the button turns red?
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                    }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                    }
-                    
-                }
-                HStack{
-                    if self.timeRemaining == 7{
+                    if env.timeRemaining == 8{
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
@@ -60,7 +39,7 @@ struct ContentView: View {
                     
                 }
                 HStack{
-                    if self.timeRemaining == 6{
+                    if env.timeRemaining == 7{
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
@@ -74,7 +53,7 @@ struct ContentView: View {
                     
                 }
                 HStack{
-                    if self.timeRemaining == 5{
+                    if env.timeRemaining == 6{
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
@@ -88,7 +67,21 @@ struct ContentView: View {
                     
                 }
                 HStack{
-                    if self.timeRemaining == 4{
+                    if env.timeRemaining == 5{
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                        self.makeButton(bgColor: .red)
+                    }else{
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                        self.makeButton(bgColor: .green)
+                    }
+                    
+                }
+                HStack{
+                    if env.timeRemaining == 4{
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
@@ -103,7 +96,7 @@ struct ContentView: View {
                 }
             
                 HStack{
-                    if self.timeRemaining == 3{
+                    if env.timeRemaining == 3{
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
@@ -118,7 +111,7 @@ struct ContentView: View {
                 }
                 
                 HStack{
-                    if self.timeRemaining == 2{
+                    if env.timeRemaining == 2{
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
@@ -133,7 +126,7 @@ struct ContentView: View {
                 }
                 
                 HStack{
-                    if self.timeRemaining == 1{
+                    if env.timeRemaining  == 1{
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
                         self.makeButton(bgColor: .red)
@@ -146,17 +139,17 @@ struct ContentView: View {
                     }
                     
                 }
-                Spacer(minLength: 2)
+//                Spacer(minLength: 2)
             }
         }
     }
     func playSound() {
         let url = Bundle.main.url(forResource: "hi", withExtension: "wav")
-        
+
         guard url != nil else{
             return
         }
-        
+
         do {
             player = try AVAudioPlayer(contentsOf: url!)
             player?.play()
@@ -185,10 +178,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            ContentView()
-            ContentView()
-        }
+        ContentView().environmentObject(GlobalState())
     }
 }
 

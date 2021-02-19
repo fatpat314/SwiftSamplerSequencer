@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D84E13F925DF42DC00518BA9 /* calculatorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E13F825DF42DC00518BA9 /* calculatorKey.swift */; };
+		D84E13FC25DF432800518BA9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E13FB25DF432800518BA9 /* extensions.swift */; };
 		D8732F9725D2168C00DD50FE /* SeqencerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732F9625D2168C00DD50FE /* SeqencerApp.swift */; };
 		D8732F9925D2168C00DD50FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8732F9825D2168C00DD50FE /* ContentView.swift */; };
 		D8732F9B25D2168F00DD50FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8732F9A25D2168F00DD50FE /* Assets.xcassets */; };
 		D8732F9E25D2168F00DD50FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8732F9D25D2168F00DD50FE /* Preview Assets.xcassets */; };
 		D8B5048425D8FDE800E3D726 /* hi.wav in Resources */ = {isa = PBXBuildFile; fileRef = D8B5048325D8FDE800E3D726 /* hi.wav */; };
+		D8C1A08725DB53C7006CCF90 /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C1A08625DB53C7006CCF90 /* GlobalState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D84E13F825DF42DC00518BA9 /* calculatorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatorKey.swift; sourceTree = "<group>"; };
+		D84E13FB25DF432800518BA9 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		D8732F9325D2168C00DD50FE /* Seqencer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seqencer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8732F9625D2168C00DD50FE /* SeqencerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeqencerApp.swift; sourceTree = "<group>"; };
 		D8732F9825D2168C00DD50FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		D8732F9D25D2168F00DD50FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D8732F9F25D2168F00DD50FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8B5048325D8FDE800E3D726 /* hi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hi.wav; path = "../../../../../../Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/hi.wav"; sourceTree = "<group>"; };
+		D8C1A08625DB53C7006CCF90 /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +63,12 @@
 				D8B5048225D8FDD600E3D726 /* Bundle */,
 				D8732F9625D2168C00DD50FE /* SeqencerApp.swift */,
 				D8732F9825D2168C00DD50FE /* ContentView.swift */,
+				D8C1A08625DB53C7006CCF90 /* GlobalState.swift */,
 				D8732F9A25D2168F00DD50FE /* Assets.xcassets */,
 				D8732F9F25D2168F00DD50FE /* Info.plist */,
 				D8732F9C25D2168F00DD50FE /* Preview Content */,
+				D84E13F825DF42DC00518BA9 /* calculatorKey.swift */,
+				D84E13FB25DF432800518BA9 /* extensions.swift */,
 			);
 			path = Seqencer;
 			sourceTree = "<group>";
@@ -150,8 +159,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84E13FC25DF432800518BA9 /* extensions.swift in Sources */,
 				D8732F9925D2168C00DD50FE /* ContentView.swift in Sources */,
+				D84E13F925DF42DC00518BA9 /* calculatorKey.swift in Sources */,
 				D8732F9725D2168C00DD50FE /* SeqencerApp.swift in Sources */,
+				D8C1A08725DB53C7006CCF90 /* GlobalState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
