@@ -13,8 +13,6 @@ var player: AVAudioPlayer!
 
 struct ContentView: View {
     @EnvironmentObject var env: GlobalState
-//     @State private var timeRemaining = 8
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -23,148 +21,134 @@ struct ContentView: View {
             VStack(spacing: 2){
                 Text(env.display).onReceive(env.timer){ input in
                     env.stepCount()
+                    env.seqPlay()
                 }.foregroundColor(Color.white)
                 HStack{
                     if env.timeRemaining == 8{
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
+                        self.makeButton(key: .A8, bgColor: .red)
+                        self.makeButton(key: .B8, bgColor: .red)
+                        self.makeButton(key: .C8, bgColor: .red)
+                        self.makeButton(key: .D8, bgColor: .red)
                     }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
+                        self.makeButton(key: .A8, bgColor: .green)
+                        self.makeButton(key: .B8,bgColor: .green)
+                        self.makeButton(key: .C8, bgColor: .green)
+                        self.makeButton(key: .D8, bgColor: .green)
                     }
-                    
                 }
                 HStack{
                     if env.timeRemaining == 7{
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
+                        self.makeButton(key: .A7, bgColor: .red)
+                        self.makeButton(key: .B7, bgColor: .red)
+                        self.makeButton(key: .C7, bgColor: .red)
+                        self.makeButton(key: .D7, bgColor: .red)
                     }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
+                        self.makeButton(key: .A7, bgColor: .green)
+                        self.makeButton(key: .B7,bgColor: .green)
+                        self.makeButton(key: .C7, bgColor: .green)
+                        self.makeButton(key: .D7, bgColor: .green)
                     }
                     
                 }
                 HStack{
                     if env.timeRemaining == 6{
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
+                        self.makeButton(key: .A6, bgColor: .red)
+                        self.makeButton(key: .B6, bgColor: .red)
+                        self.makeButton(key: .C6, bgColor: .red)
+                        self.makeButton(key: .D6, bgColor: .red)
                     }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
+                        self.makeButton(key: .A6, bgColor: .green)
+                        self.makeButton(key: .B6,bgColor: .green)
+                        self.makeButton(key: .C6, bgColor: .green)
+                        self.makeButton(key: .D6, bgColor: .green)
                     }
                     
                 }
                 HStack{
                     if env.timeRemaining == 5{
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
+                        self.makeButton(key: .A5, bgColor: .red)
+                        self.makeButton(key: .B5, bgColor: .red)
+                        self.makeButton(key: .C5, bgColor: .red)
+                        self.makeButton(key: .D5, bgColor: .red)
                     }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
+                        self.makeButton(key: .A5, bgColor: .green)
+                        self.makeButton(key: .B5,bgColor: .green)
+                        self.makeButton(key: .C5, bgColor: .green)
+                        self.makeButton(key: .D5, bgColor: .green)
                     }
                     
                 }
                 HStack{
                     if env.timeRemaining == 4{
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
+                        self.makeButton(key: .A4, bgColor: .red)
+                        self.makeButton(key: .B4, bgColor: .red)
+                        self.makeButton(key: .C4, bgColor: .red)
+                        self.makeButton(key: .D4, bgColor: .red)
                     }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
+                        self.makeButton(key: .A4, bgColor: .green)
+                        self.makeButton(key: .B4,bgColor: .green)
+                        self.makeButton(key: .C4, bgColor: .green)
+                        self.makeButton(key: .D4, bgColor: .green)
                     }
                     
                 }
             
                 HStack{
                     if env.timeRemaining == 3{
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
+                        self.makeButton(key: .A3, bgColor: .red)
+                        self.makeButton(key: .B3, bgColor: .red)
+                        self.makeButton(key: .C3, bgColor: .red)
+                        self.makeButton(key: .D3, bgColor: .red)
                     }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
+                        self.makeButton(key: .A3, bgColor: .green)
+                        self.makeButton(key: .B3,bgColor: .green)
+                        self.makeButton(key: .C3, bgColor: .green)
+                        self.makeButton(key: .D3, bgColor: .green)
                     }
                     
                 }
                 
                 HStack{
                     if env.timeRemaining == 2{
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
+                        self.makeButton(key: .A2, bgColor: .red)
+                        self.makeButton(key: .B2, bgColor: .red)
+                        self.makeButton(key: .C2, bgColor: .red)
+                        self.makeButton(key: .D2, bgColor: .red)
                     }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
+                        self.makeButton(key: .A2, bgColor: .green)
+                        self.makeButton(key: .B2,bgColor: .green)
+                        self.makeButton(key: .C2, bgColor: .green)
+                        self.makeButton(key: .D2, bgColor: .green)
                     }
                     
                 }
                 
                 HStack{
                     if env.timeRemaining  == 1{
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
-                        self.makeButton(bgColor: .red)
+                        self.makeButton(key: .A1, bgColor: .red)
+                        self.makeButton(key: .B1, bgColor: .red)
+                        self.makeButton(key: .C1, bgColor: .red)
+                        self.makeButton(key: .D1, bgColor: .red)
                     }else{
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
-                        self.makeButton(bgColor: .green)
+                        self.makeButton(key: .A1, bgColor: .green)
+                        self.makeButton(key: .B1,bgColor: .green)
+                        self.makeButton(key: .C1, bgColor: .green)
+                        self.makeButton(key: .D1, bgColor: .green)
                     }
                     
                 }
-//                Spacer(minLength: 2)
+                Spacer(minLength: 2)
             }
         }
     }
-    func playSound() {
-        let url = Bundle.main.url(forResource: "hi", withExtension: "wav")
 
-        guard url != nil else{
-            return
-        }
-
-        do {
-            player = try AVAudioPlayer(contentsOf: url!)
-            player?.play()
-        } catch {
-            print("error")
-        }
-        return
-    }
     
-    func makeButton(title: String = "", width: CGFloat = 65, height: CGFloat = 65, bgColor: Color = Color(white: 0.4)) -> some View {
+    func makeButton(key: PressedKey = .A1, width: CGFloat = 65, height: CGFloat = 65, bgColor: Color = Color(white: 0.4)) -> some View {
         return AnyView(
             Button(action: {
-                playSound()
+                env.keyPressed(key: key)
             }, label: {
-                Text("")
+                Text(key.rawValue)
                 .frame(width: width, height: height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .background(bgColor)
                 .cornerRadius(35)
