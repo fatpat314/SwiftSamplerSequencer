@@ -7,6 +7,7 @@
 
 import Foundation
 import AVFoundation
+import AVKit
 
 class GlobalState: ObservableObject {
     @Published var display = "8"
@@ -26,6 +27,11 @@ class GlobalState: ObservableObject {
             display = String(timeRemaining)
         }
     }
+    
+//    func recordSample(){
+//        
+//        
+//    }
     
     func playSound(fileName: String, fileExtension: String) {
         let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension)

@@ -13,6 +13,9 @@ var player: AVAudioPlayer!
 
 struct ContentView: View {
     @EnvironmentObject var env: GlobalState
+    @State private var showPopUp = false
+    @State var isLongPressing = false
+
     
     var body: some View {
         ZStack {
@@ -23,6 +26,21 @@ struct ContentView: View {
                     env.stepCount()
                     env.seqPlay()
                 }.foregroundColor(Color.white)
+                HStack{
+                    Button("Stop", action: {
+                        env.timer.upstream.connect().cancel()
+                        })
+                    Button("Start", action: {
+                        env.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                        })
+                    Button("Retrigger", action: {
+                        env.timer.upstream.connect()
+                        })
+                    Button("Record",action: {
+//                            RecordingAction()
+                        })
+                }
+                
                 HStack{
                     if env.timeRemaining == 8{
                         self.makeButton(key: .A8, bgColor: .red)
@@ -36,6 +54,7 @@ struct ContentView: View {
                         self.makeButton(key: .D8, bgColor: .green)
                     }
                 }
+                
                 HStack{
                     if env.timeRemaining == 7{
                         self.makeButton(key: .A7, bgColor: .red)
@@ -50,6 +69,7 @@ struct ContentView: View {
                     }
                     
                 }
+                
                 HStack{
                     if env.timeRemaining == 6{
                         self.makeButton(key: .A6, bgColor: .red)
@@ -64,6 +84,7 @@ struct ContentView: View {
                     }
                     
                 }
+                
                 HStack{
                     if env.timeRemaining == 5{
                         self.makeButton(key: .A5, bgColor: .red)
@@ -78,6 +99,7 @@ struct ContentView: View {
                     }
                     
                 }
+                
                 HStack{
                     if env.timeRemaining == 4{
                         self.makeButton(key: .A4, bgColor: .red)
@@ -137,16 +159,38 @@ struct ContentView: View {
                     }
                     
                 }
-                Spacer(minLength: 2)
+//            Spacer(minLength: 2)
+            }
+            if $showPopUp.wrappedValue {
+                ZStack {
+                    Color.white
+                    VStack {
+                        Text("Sample Menu")
+                        Spacer()
+                        Button(action: {
+                            self.showPopUp = false
+                        }, label: {
+                            Text("Close")
+                        })
+                    }.padding()
+                }
+                .frame(width: 300, height: 200, alignment: .center)
+                .cornerRadius(20).shadow(radius: 20)
             }
         }
     }
 
     
-    func makeButton(key: PressedKey = .A1, width: CGFloat = 65, height: CGFloat = 65, bgColor: Color = Color(white: 0.4)) -> some View {
+    func makeButton(key: PressedKey = .A1, width: CGFloat = 60, height: CGFloat = 60, bgColor: Color = Color(white: 0.4)) -> some View {
         return AnyView(
             Button(action: {
-                env.keyPressed(key: key)
+                print("tap")
+                if(self.isLongPressing){
+                    self.isLongPressing.toggle()
+                } else {
+                    //just a regular tap
+                    env.keyPressed(key: key)
+                }
             }, label: {
                 Text(key.rawValue)
                 .frame(width: width, height: height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -154,10 +198,13 @@ struct ContentView: View {
                 .cornerRadius(35)
                 .font(.system(size: 28))
                 .foregroundColor(.white)
-        }))
+        })).simultaneousGesture(LongPressGesture(minimumDuration: 0.2).onEnded { _ in
+            print("long press")
+            self.isLongPressing = true
+            self.showPopUp = true
+        })
     }
 }
-
 
 
 struct ContentView_Previews: PreviewProvider {
