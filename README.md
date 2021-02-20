@@ -13,6 +13,7 @@ A simple audio sampler and sequencer
 + + ~~Create a switch in the globalstate file to represent each independent button~~
 + + ~~Hold the playSound logic in those struct cases~~
 + Get button to play a different sound per cell
-+ When button held, record until button is released
++ ~~When button held, open sample menu~~
++ Record and save new samples
 + + There might be an issue with calling two samples at the same time...
 
